@@ -1,0 +1,36 @@
+SELECT
+  AccountSource,
+  Id AS AccountIdAccount,
+  FirstName AS AccountFirstName,
+  LastName AS AccountLastName, 
+  CreatedDate AS AccountCreatedDate, 
+  Name AS AccountName, 
+  Type, 
+  Segmento_Oportunidade__pc, 
+  PersonHasOptedOutOfEmail, 
+  Phone AS AccountPhone,
+  BillingCity,
+  PersonMailingCity, 
+  BillingStateCode, 
+  PersonMailingStateCode,
+  Estado_IA__c, FC_Email_PJ__c, 
+  Data_da_ultima_convers_o__c, 
+  Oportunidade__pc, 
+  Oportunidade_PF__c, 
+  Tem_Oportunidade__c, 
+  Data_de_Cria_o_Ult_Oportunidade__c, 
+  Data_de_ultimo_contato__c AS AccountData_de_ultimo_contato__c,
+  LastActivityDate AS AccountLastActivityDate, 
+  Ultima_Altera_o__c AS AccountUltima_Altera_o__c 
+
+FROM Account_Salesforce AS A
+
+WHERE 
+Data_da_ultima_convers_o__c >= '2025-01-01'
+    AND
+Data_da_ultima_convers_o__c <= '2025-12-31'
+AND
+FC_Email_PJ__c NOT IN ('cpe')
+AND
+FC_Email_PJ__c IS NOT NULL
+
