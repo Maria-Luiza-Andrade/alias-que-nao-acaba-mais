@@ -1,0 +1,69 @@
+SELECT DISTINCT
+O.OpportunityCreatedById,
+O.OpportunityCreatedDate,
+O.OpportunityId,
+O.IsDeleted,
+O.OpportunityLastModifiedDate,
+O.OpportunityLastModifiedById,
+O.OpportunityLastReferencedDate,
+O.LastViewedDate,
+O.OpportunityName,
+O.Email__c, 
+O.Telefone__c, 
+O.Fase2__c, 
+O.Type, 
+O.OpportunityTemperatura__c, 
+O.FC_Motivo_de_Perda__c, 
+O.Amount, 
+O.OpportunityPrimeiro_nome__c, 
+O.OpportunitySobrenome__c, 
+O.Origem_da_Oportunidade__c, 
+O.StageName, 
+O.AccountId, 
+A.AccountSource, 
+A.AccountIdAccount, 
+A.AccountFirstName, 
+A.AccountLastName, 
+A.AccountCreatedDate, 
+A.AccountName, 
+A.Segmento_Oportunidade__pc, 
+A.PersonHasOptedOutOfEmail, 
+A.AccountPhone, 
+A.BillingCity, 
+A.PersonMailingCity, 
+A.BillingStateCode, 
+A.PersonMailingStateCode, 
+A.Estado_IA__c, 
+A.Data_da_ultima_convers_o__c, 
+A.Oportunidade__pc, 
+A.Oportunidade_PF__c, 
+A.Tem_Oportunidade__c, 
+A.Data_de_Cria_o_Ult_Oportunidade__c, 
+A.AccountLastActivityDate, 
+A.AccountUltima_Altera_o__c, 
+A.FC_Email_PJ__c, 
+A.AccountData_de_ultimo_contato__c
+    
+FROM
+    DE_CONTA AS A 
+INNER JOIN 
+    DE_OPP AS O 
+    ON A.AccountIdAccount = O.AccountId
+
+WHERE
+    (
+    OpportunityLastModifiedDate >= '2025-01-01'
+    AND
+    OpportunityLastModifiedDate <= '2025-12-31' 
+    )
+    OR
+    (
+    OpportunityCreatedDate >= '2025-01-01'
+    AND
+    OpportunityCreatedDate <= '2025-12-31' 
+    )
+AND
+    A.FC_Email_PJ__c NOT IN ('cpe')
+AND
+    A.FC_Email_PJ__c IS NOT NULL
+
