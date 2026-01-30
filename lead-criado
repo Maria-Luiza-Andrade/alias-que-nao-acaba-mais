@@ -1,0 +1,33 @@
+SELECT
+Email AS LeadEmail, 
+HasOptedOutOfEmail, 
+Id AS LeadId, 
+Status AS LeadStatus, 
+Phone AS LeadPhone, 
+Estado_IAL__c, 
+Qual_equipamento_deseja_fechar__c, 
+Interesse_de_negociacao__c, 
+CreatedDate AS LeadCreatedDate, 
+Desqualificado__c, 
+LeadSource AS LeadLeadSource, 
+LastName AS LeadLastName, 
+FirstName AS LeadFirstName, 
+Temperatura__c AS LeadTemperatura__c, 
+Mudanca_de_Status_SDR__c, 
+LastModifiedDate AS LeadLastModifiedDate 
+
+FROM Lead_Salesforce AS S
+
+WHERE 
+    
+    HasOptedOutOfEmail = 0
+AND
+    S.CreatedDate >= '2025-01-01'
+    AND
+    S.CreatedDate <= '2025-12-31'
+AND
+S.Email NOT IN ('cpe')
+AND
+S.Email IS NOT NULL
+
+
