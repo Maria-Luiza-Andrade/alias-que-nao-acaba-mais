@@ -1,0 +1,42 @@
+SELECT
+CreatedById AS OpportunityCreatedById, 
+CreatedDate AS OpportunityCreatedDate, 
+Id AS OpportunityId, 
+IsDeleted, 
+LastModifiedDate  AS OpportunityLastModifiedDate, 
+LastModifiedById AS OpportunityLastModifiedById, 
+LastReferencedDate AS OpportunityLastReferencedDate, 
+LastViewedDate, 
+Name AS OpportunityName, 
+Email__c, 
+Telefone__c, 
+Fase2__c, 
+LeadSource, 
+Type, 
+Temperatura__c AS OpportunityTemperatura__c, 
+FC_Motivo_de_Perda__c, 
+Amount, 
+Primeiro_nome__c AS OpportunityPrimeiro_nome__c, 
+Sobrenome__c AS OpportunitySobrenome__c, 
+Origem_da_Oportunidade__c, 
+StageName, 
+AccountId, 
+LastStageChangeDate 
+
+
+FROM Opportunity_Salesforce AS S
+
+WHERE 
+    
+    (CreatedDate >= '2025-01-01'
+    AND
+    CreatedDate <= '2025-12-31')
+    OR
+    (LastModifiedDate >= '2025-01-01'
+    AND
+    LastModifiedDate <= '2025-12-31')
+AND
+Email__c NOT IN ('cpe')
+AND
+Email__c IS NOT NULL
+
