@@ -1,0 +1,90 @@
+SELECT
+D.OpportunityCreatedById,
+D.OpportunityCreatedDate,
+D.OpportunityId,
+D.IsDeleted,
+D.OpportunityLastModifiedDate,
+D.OpportunityLastModifiedById,
+D.OpportunityLastReferencedDate,
+D.LastViewedDate,
+D.OpportunityName,
+D.Email__c, 
+D.Telefone__c, 
+D.Fase2__c, 
+D.OpportunityTemperatura__c, 
+D.FC_Motivo_de_Perda__c, 
+D.Amount, 
+D.OpportunityPrimeiro_nome__c, 
+D.OpportunitySobrenome__c, 
+D.Origem_da_Oportunidade__c, 
+D.StageName, 
+D.AccountId, 
+D.AccountSource, 
+D.AccountIdAccount, 
+D.AccountFirstName, 
+D.AccountLastName, 
+D.AccountCreatedDate, 
+D.AccountName, 
+D.Segmento_Oportunidade__pc, 
+D.PersonHasOptedOutOfEmail, 
+D.AccountPhone, 
+D.BillingCity, 
+D.PersonMailingCity, 
+D.BillingStateCode, 
+D.PersonMailingStateCode, 
+D.Estado_IA__c, 
+D.Data_da_ultima_convers_o__c, 
+D.Oportunidade__pc, 
+D.Oportunidade_PF__c, 
+D.Tem_Oportunidade__c, 
+D.Data_de_Cria_o_Ult_Oportunidade__c, 
+D.AccountLastActivityDate, 
+D.AccountUltima_Altera_o__c, 
+D.FC_Email_PJ__c, 
+D.AccountData_de_ultimo_contato__c,
+D.LastStageChangeDate,
+L.LeadEmail, 
+L.HasOptedOutOfEmail,
+L.LeadId,
+L.LeadStatus, 
+L.LeadPhone, 
+L.Estado_IAL__c, 
+L.Qual_equipamento_deseja_fechar__c, 
+L.Interesse_de_negociacao__c, 
+L.LeadCreatedDate, 
+L.Desqualificado__c, 
+L.LeadLeadSource, 
+L.LeadLastName,
+L.LeadFirstName, 
+L.LeadTemperatura__c, 
+L.Mudanca_de_Status_SDR__c, 
+L.LeadLastModifiedDate 
+
+
+FROM
+    DE_CONTA_OPP AS D 
+INNER JOIN
+    	DE_LEAD_ALL AS L 
+    
+    ON D.FC_Email_PJ__c = L.LeadEmail
+    
+WHERE
+    D.PersonHasOptedOutOfEmail = 'False'
+    
+    AND
+    L.LeadLeadSource = 'Meta'
+    
+    AND
+    (
+    L.LeadStatus =  'Qualificado'
+    OR
+    L.LeadStatus =  'Retorno Vendedor'
+    )
+    AND
+    L.LeadLastModifiedDate = '2025-01-01'
+    AND
+    L.LeadLastModifiedDate = '2025-12-31'
+    
+
+
+    
